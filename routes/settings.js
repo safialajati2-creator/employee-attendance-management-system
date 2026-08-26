@@ -1,0 +1,3 @@
+const express=require('express');const router=express.Router();const {readSettings,writeSettings}=require('../storage/fileStorage');const {addAuditLog}=require('../utils/auditLog');
+router.get('/',(req,res)=>res.render('settings/index',{title:'Ayarlar',settings:readSettings()}));
+router.post('/',(req,res)=>{writeSettings({workStartTime:req.body.workStartTime,workEndTime:req.body.workEndTime,lateTolerance:Number(req.body.lateTolerance),overtimeStartTime:req.body.overtimeStartTime});addAuditLog('SETTINGS_UPDATE','Ayarlar güncellendi');req.session.flash={type:'success',message:'Ayarlar kaydedildi'};res.redirect('/settings')});module.exports=router;
