@@ -1,0 +1,5 @@
+[
+  {"id":"emp_001","firstName":"Ahmet","lastName":"Yılmaz","kimlikNo":"10000000001","department":"Üretim","startDate":"2026-01-05","status":"Aktif","notes":""},
+  {"id":"emp_002","firstName":"Mehmet","lastName":"Demir","kimlikNo":"10000000002","department":"Muhasebe","startDate":"2026-02-10","status":"Aktif","notes":""},
+  {"id":"emp_003","firstName":"Ayşe","lastName":"Kaya","kimlikNo":"10000000003","department":"İnsan Kaynakları","startDate":"2026-03-15","status":"Aktif","notes":""}
+]
