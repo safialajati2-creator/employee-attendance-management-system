@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs');
 const { readData, readShifts, readSettings } = require('../storage/fileStorage');
 const { addAuditLog } = require('../utils/auditLog');
+const { resolveUnicodeFonts } = require('../utils/fontUtils');
 const ExcelJS = require('exceljs');
 const PDFDocument = require('pdfkit');
 
@@ -74,11 +74,16 @@ router.get('/excel', async (req, res) => {
 
 router.get('/pdf', (req, res) => {
   const list = allRows();
-  res.setHeader('Content-Type', 'application/pdf'); res.setHeader('Content-Disposition', 'attachment; filename=Gec_Gelenler_Raporu.pdf');
-  const doc = new PDFDocument({ size:'A4', margin:40 }); doc.pipe(res);
-  const fontPath = process.env.PDF_FONT_PATH || '';
-  if (fontPath && fs.existsSync(fontPath)) { doc.registerFont('TR', fontPath); doc.font('TR'); }
-  else doc.font('Helvetica');
+  const fonts = resolveUnicodeFonts();
+  if (!fonts.regular) return res.status(500).send('Türkçe PDF için Unicode font bulunamadı. PDF_FONT_PATH ayarlayın.');
+
+  res.setHeader('Content-Type', 'application/pdf');
+  res.setHeader('Content-Disposition', 'attachment; filename=Gec_Gelenler_Raporu.pdf');
+  const doc = new PDFDocument({ size:'A4', margin:40 });
+  doc.registerFont('TR', fonts.regular);
+  doc.registerFont('TR-Bold', fonts.bold || fonts.regular);
+  doc.pipe(res);
+  doc.font('TR');
   doc.fontSize(18).text('GEÇ GELENLER RAPORU', { align:'center' }); doc.moveDown(0.5);
   doc.fontSize(10).fillColor('#475569').text(`Rapor Tarihi: ${new Date().toLocaleDateString('tr-TR')}`, { align:'right' }); doc.moveDown(1);
   list.forEach((x, index) => {
