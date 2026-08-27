@@ -1,25 +1,23 @@
 'use strict';
-const fs = require('fs');
 const PDFDocument = require('pdfkit');
 const { dayNameTr, formatDateTr, monthNameTr } = require('./dateUtils');
 const { summarize } = require('./calculationUtils');
+const { resolveUnicodeFonts } = require('./fontUtils');
 
-const FONT_REGULAR = process.env.PDF_FONT_PATH || '';
-const FONT_BOLD = process.env.PDF_FONT_BOLD_PATH || '';
 const STATUS_COLOR = { Geldi:'#1e7e34', Gelmedi:'#c82333', İzinli:'#0d6efd', Raporlu:'#e0820c' };
 
 function setupFonts(doc){
-  let regular='Helvetica', bold='Helvetica-Bold';
-  if(FONT_REGULAR && fs.existsSync(FONT_REGULAR)){
-    doc.registerFont('Main',FONT_REGULAR); regular='Main';
-    if(FONT_BOLD && fs.existsSync(FONT_BOLD)){doc.registerFont('Main-Bold',FONT_BOLD);bold='Main-Bold';}
-    else bold='Main';
-  }
-  return {regular,bold};
+  const resolved = resolveUnicodeFonts();
+  if (!resolved.regular) throw new Error('Türkçe PDF için Unicode font bulunamadı. PDF_FONT_PATH ayarlayın.');
+  doc.registerFont('Main', resolved.regular);
+  doc.registerFont('Main-Bold', resolved.bold || resolved.regular);
+  return { regular:'Main', bold:'Main-Bold' };
 }
 
 function streamEmployeeMonthlyPdf(res,employee,records,year,month){
-  const doc=new PDFDocument({size:'A4',layout:'landscape',margin:30}); const fonts=setupFonts(doc); doc.pipe(res);
+  const doc=new PDFDocument({size:'A4',layout:'landscape',margin:30});
+  const fonts=setupFonts(doc);
+  doc.pipe(res);
   const fullName=`${employee.firstName} ${employee.lastName}`;
   const pageLeft=doc.page.margins.left, pageRight=doc.page.width-doc.page.margins.right, usableWidth=pageRight-pageLeft;
   doc.font(fonts.bold).fontSize(16).fillColor('#1F4E78').text('Aylık Devam Raporu',{align:'center'}); doc.moveDown(0.3);
