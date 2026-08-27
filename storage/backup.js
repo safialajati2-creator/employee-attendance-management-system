@@ -10,9 +10,16 @@
 
 const fs = require('fs');
 const path = require('path');
-const { DATA_DIR, BACKUP_DIR, FILES } = require('./fileStorage');
+const { DATA_DIR, BACKUP_DIR } = require('./fileStorage');
 
-const BACKUP_TARGETS = ['employees.json', 'attendance.json', 'audit_logs.json'];
+const BACKUP_TARGETS = [
+  'employees.json',
+  'attendance.json',
+  'audit_logs.json',
+  'shifts.json',
+  'settings.json',
+  'holidays.json',
+];
 
 function timestampName() {
   const d = new Date();
@@ -37,7 +44,7 @@ function createBackup(label) {
     const src = path.join(DATA_DIR, fileName);
     const dest = path.join(targetDir, fileName);
     if (fs.existsSync(src)) fs.copyFileSync(src, dest);
-    else fs.writeFileSync(dest, '[]', 'utf8');
+    else fs.writeFileSync(dest, fileName === 'settings.json' ? '{}' : '[]', 'utf8');
   }
   return folderName;
 }
