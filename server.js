@@ -117,11 +117,13 @@ app.get('/', requireAuth, (req, res) => {
   });
 });
 
+// Keep the more specific import route before the generic /employees router,
+// otherwise /employees/:id can interpret "import" as an employee id.
+app.use('/employees/import', requireAuth, requireRole('admin'), importRoutes);
 app.use('/employees', requireAuth, requireRole('admin'), employeeRoutes);
 app.use('/attendance', requireAuth, attendanceRoutes);
 app.use('/reports', requireAuth, requireRole('admin'), reportRoutes);
 app.use('/backups', requireAuth, requireRole('admin'), backupRoutes);
-app.use('/employees/import', requireAuth, requireRole('admin'), importRoutes);
 app.use('/late', requireAuth, requireRole('admin'), lateRoutes);
 app.use('/settings', requireAuth, requireRole('admin'), settingsRoutes);
 app.use('/shifts', requireAuth, requireRole('admin'), shiftsRoutes);
