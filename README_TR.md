@@ -13,33 +13,75 @@
 
 **Node.js, Express ve EJS** ile geliştirilmiş rol tabanlı bir **personel devam/devamsızlık, çalışma saati, fazla mesai ve operasyonel raporlama sistemi**dir. Proje, veritabanı sunucusuna ihtiyaç duymadan çalışabilen hafif bir iş uygulaması olarak tasarlanmış ve operasyonel veriler yapılandırılmış JSON dosyalarında saklanmıştır.
 
-Uygulama; çalışan yönetimi, günlük devam kaydı, giriş/çıkış takibi, geç kalma tespiti, fazla mesai hesaplama, vardiyalar, tatiller, raporlar, Excel/PDF çıktıları, audit log ve yedekleme/geri yükleme süreçlerini tek sistemde birleştirir.
+Uygulama; çalışan yönetimi, günlük devam kaydı, giriş/çıkış takibi, geç kalma tespiti, fazla mesai hesaplama, vardiyalar, raporlar, Excel/PDF çıktıları, audit log, ayarlar ve yedekleme/geri yükleme süreçlerini tek sistemde birleştirir.
 
-## 🖥️ Ekran Görüntüleri
+## 🖥️ Uygulama Görselleri
 
-Portföy sunumu için proje ekran görüntüleri bu bölüme eklenecektir.
+### Panel
+Merkezi yönetim paneli; aktif çalışanları, günlük kayıtları, geç gelenleri, kayıt bekleyen personeli ve son girişleri tek ekranda özetler.
+
+<p align="center">
+  <img src="docs/1213.png" alt="Personel devam takip sistemi paneli" width="100%" />
+</p>
+
+### Çalışan Yönetimi ve Günlük Kayıt
+Çalışan listesinde arama, profil görüntüleme, durum bilgisi ve düzenleme işlemleri bulunur. Günlük kayıt ekranında devam durumu, giriş/çıkış, fazla mesai, devamsızlık sebebi, sağlık raporu ve açıklama bilgileri tek tablodan yönetilir.
+
+<p align="center">
+  <img src="docs/132.png" alt="Çalışan yönetimi" width="49%" />
+  <img src="docs/1231.png" alt="Günlük devam kaydı" width="49%" />
+</p>
+
+### Geç Gelenler ve Aylık Raporlar
+Geç gelen personel çalışan, ay ve yıl bazında filtrelenebilir; sonuçlar Excel/PDF olarak dışa aktarılabilir. Aylık rapor ekranı tüm çalışanların devam durumlarını, çalışma saatlerini ve fazla mesailerini özetler.
+
+<p align="center">
+  <img src="docs/12311.png" alt="Geç gelenler analizi" width="49%" />
+  <img src="docs/123123.png" alt="Aylık devam raporları" width="49%" />
+</p>
+
+### Çalışma Programları ve Sistem Ayarları
+Admin, hafta içi ve cumartesi çalışma saatlerini, vardiya bazlı geç kalma toleransını ve genel mesai/fazla mesai saatlerini yönetebilir.
+
+<p align="center">
+  <img src="docs/1231231.png" alt="Çalışma programları" width="49%" />
+  <img src="docs/123123131.png" alt="Sistem ayarları" width="49%" />
+</p>
+
+### Çalışan Profili
+Her çalışan için aylık devam geçmişi, geç kalma istatistikleri, çalışma saati özetleri ve çalışan bazlı Excel/PDF dışa aktarma seçenekleri bulunan detaylı profil sayfası vardır.
+
+<p align="center">
+  <img src="docs/123131231.png" alt="Çalışan profili ve devam geçmişi" width="100%" />
+</p>
+
+<details>
+<summary><b>Çalışan düzenleme ekranı</b></summary>
+<br>
+<p align="center">
+  <img src="docs/123131312.png" alt="Çalışan düzenleme formu" width="100%" />
+</p>
+</details>
 
 ## ✨ Temel Özellikler
 
 ### Çalışan Yönetimi
-- Yeni çalışan ekleme
-- Çalışan bilgilerini düzenleme
+- Yeni çalışan ekleme ve çalışan bilgilerini düzenleme
 - Ad, soyad veya kimlik numarasıyla arama
 - Çalışanı aktif / pasif yapma
 - Devam geçmişi olmayan çalışanı silme
-- Aylık devam özeti içeren çalışan profil sayfası
-- Çalışana vardiya atama
-- Çalışana devam kaydı sorumlusu süpervizör atama
+- Aylık devam ve geç kalma özetleri içeren çalışan profil sayfası
+- Çalışana çalışma programı ve süpervizör atama
 - `.xlsx` dosyasından çalışan içe aktarma
 
 ### Devam / Devamsızlık
 - Günlük devam kayıt ekranı
-- Desteklenen durumlar: **Geldi**, **Gelmedi**, **İzinli**, **Raporlu**
+- Durumlar: **Geldi**, **Gelmedi**, **İzinli**, **Raporlu**
 - Giriş ve çıkış saati takibi
 - Aynı çalışan + aynı tarih için mükerrer kayıt engelleme
-- Daha önce kaydedilmiş devam kaydını düzenleme
+- Önceden kaydedilmiş devam kayıtlarını düzenleme
 - Açıklama, devamsızlık sebebi ve sağlık raporu bilgileri
-- Süpervizör yetkisine göre sınırlı devam kayıt akışı
+- Süpervizör yetkisine göre sınırlı operasyonel kayıt akışı
 
 ### Çalışma Saati, Fazla Mesai ve Geç Kalma
 - Otomatik çalışma saati hesaplama
@@ -47,31 +89,30 @@ Portföy sunumu için proje ekran görüntüleri bu bölüme eklenecektir.
 - Genel çalışma saati veya atanmış vardiyaya göre geç kalma tespiti
 - Ayarlanabilir geç kalma toleransı
 - Cumartesi için ayrı vardiya saatleri
-- Toplam gecikme dakikaları ve çalışan özetleriyle geç kalma raporları
+- Toplam gecikme dakikaları ve çalışan özetleri
 
 ### Vardiyalar, Tatiller ve Ayarlar
 - Çalışma programı / vardiya tanımlama
 - Hafta içi ve cumartesi çalışma saatleri
 - Vardiya bazlı geç kalma toleransı
-- Tatil tarihi tanımlama
+- Tatil tarihi yönetimi
 - Genel çalışma başlangıç/bitiş ayarları
 - Genel fazla mesai başlangıç saati ayarı
 
-### Raporlama
+### Raporlama ve Dışa Aktarma
 - Çalışan bazlı aylık devam raporu
 - Tüm çalışanlar için aylık genel özet
 - Geldi / Gelmedi / İzinli / Raporlu toplamları
-- Toplam çalışma saati
-- Toplam fazla mesai saati
-- Geç kalma raporu
-- **ExcelJS** ile Excel çıktısı
-- **PDFKit** ile PDF çıktısı
-- Türkçe karakterlerin doğru görüntülenmesi için platformlar arası Unicode font bulma desteği
+- Toplam çalışma ve fazla mesai saatleri
+- Geç kalma raporları
+- **ExcelJS** ile Excel çıktıları
+- **PDFKit** ile PDF çıktıları
+- Türkçe PDF metni için platformlar arası Unicode font bulma desteği
 
 ### Yedekleme ve Audit Log
-- Önemli çalışan ve devam değişikliklerinden önce otomatik yedek
+- Önemli değişikliklerden önce otomatik yedek
 - Manuel yedek oluşturma
-- Seçili yedekten geri yükleme
+- Mevcut yedekten geri yükleme
 - Geri yükleme öncesi güvenlik yedeği
 - Çalışanlar, devam kayıtları, audit log, vardiyalar, ayarlar ve tatiller için yedekleme
 - Önemli sistem işlemlerinin audit log kayıtları
@@ -79,27 +120,10 @@ Portföy sunumu için proje ekran görüntüleri bu bölüme eklenecektir.
 ## 👤 Roller ve Yetkiler
 
 ### Admin
-Admin, sistemin tüm yönetim bölümlerine erişebilir:
-
-- Dashboard
-- Çalışan yönetimi
-- Excelden çalışan içe aktarma
-- Devam kayıtları
-- Raporlar ve dışa aktarma
-- Geç kalma analizi
-- Yedekleme / geri yükleme
-- Ayarlar
-- Vardiyalar
-- Tatiller
+Admin; panel, çalışan yönetimi, Excel içe aktarma, devam kayıtları, raporlar, geç kalma analizi, yedekler, ayarlar, vardiyalar ve tatiller dahil sistemin tüm yönetim bölümlerine erişebilir.
 
 ### Supervisor
-Süpervizör rolü operasyonel devam akışıyla sınırlandırılmıştır:
-
-- Dashboard erişimi
-- Devam kayıt ekranı
-- Kendisine görünür olan çalışanların devam kayıtlarını işleme
-
-Çalışan yönetimi, raporlar, yedekler, ayarlar, vardiyalar ve tatiller gibi admin bölümleri süpervizör için **403 Forbidden** döndürür.
+Süpervizör rolü operasyonel devam akışıyla sınırlandırılmıştır. Süpervizör panel ve kendisine görünür çalışanların devam kayıt ekranına erişebilir; admin bölümleri **403 Forbidden** döndürür.
 
 ## 🧰 Kullanılan Teknolojiler
 
@@ -146,70 +170,41 @@ Süpervizör rolü operasyonel devam akışıyla sınırlandırılmıştır:
 │   ├── fontUtils.js
 │   └── lateUtils.js
 ├── views/
-│   ├── attendance/
-│   ├── backups/
-│   ├── employees/
-│   ├── holidays/
-│   ├── late/
-│   ├── reports/
-│   ├── settings/
-│   └── shifts/
 ├── public/
-│   ├── css/
-│   └── js/
+├── docs/
 └── data/
-    ├── employees.json
-    ├── attendance.json
-    ├── audit_logs.json
-    ├── shifts.json
-    ├── settings.json
-    ├── holidays.json
-    ├── users.json
-    └── backups/
 ```
 
 ## 💾 Veri Saklama Modeli
 
-Proje bilinçli olarak **MySQL, PostgreSQL, MongoDB veya SQLite gerektirmez**. Hafif bir iş uygulaması mimarisini göstermek için yerel JSON dosyaları kullanır.
+Proje bilinçli olarak **MySQL, PostgreSQL, MongoDB veya SQLite gerektirmez**. Hafif bir iş sistemi mimarisini göstermek için yerel JSON dosyaları kullanır.
 
-Veri saklama katmanı şu özelliklere sahiptir:
-
-- Eksik veri dosyalarını otomatik oluşturma
-- Güvenli JSON okuma
-- Geçici dosya + rename ile atomik yazma
-- Benzersiz ID üretimi
-- Bozuk veri dosyasını sessizce ezmeden hata verme
-- Zaman damgalı yedek klasörleri
-
-Bu yapı yerel / dahili kullanım ve portföy demonstrasyonu için pratiktir. Çok kullanıcılı büyük bir üretim ortamında transactional bir veritabanına geçmek önerilir.
+Veri saklama katmanı; eksik dosyaları otomatik oluşturma, güvenli JSON okuma, geçici dosya + rename ile atomik yazma, benzersiz ID üretimi, bozuk veri dosyasını sessizce ezmeden hata verme ve zaman damgalı yedek klasörleri özelliklerini içerir. Büyük ve çok kullanıcılı production ortamında transactional bir veritabanına geçmek önerilir.
 
 ## 🔐 Kimlik Doğrulama ve Güvenlik
 
-Açık repository portföy için güvenli hale getirilmiştir.
+Bu açık repository portföy için güvenli hale getirilmiştir:
 
 - Gerçek `.env` dosyası Git'e dahil edilmez
-- Gerçek parola veya production credential repository içinde tutulmaz
+- Production parola veya credential repository içinde tutulmaz
 - Giriş bilgileri environment variable üzerinden alınır
 - `SESSION_SECRET` zorunludur
 - `data/users.json` parola içermez
 - Yedek dosyaları Git'e dahil edilmez
-- Excel yüklemeleri geçicidir ve `.xlsx` ile sınırlandırılmıştır
-- Geçici yükleme dosyaları işlem sonunda temizlenir
-- Rol tabanlı yetkilendirme admin route'larını korur
+- Excel yüklemeleri geçicidir, yalnızca `.xlsx` kabul edilir, dosya boyutu sınırlandırılır ve işlem sonrası silinir
+- Rol tabanlı yetkilendirme yönetim route'larını korur
 
-Production kullanımında parola hashleme, kalıcı session store, CSRF koruması, rate limiting, HTTPS üzerinde secure cookie ve veritabanı tabanlı kullanıcı modeli eklenmesi önerilir.
+Production kullanımında parola hashleme, kalıcı session store, CSRF koruması, rate limiting, HTTPS üzerinde secure cookie ve veritabanı tabanlı kullanıcı modeli önerilir.
 
 ## 🌐 Environment Variables
 
-`.env.example` dosyasını `.env` olarak kopyalayıp kendi yerel değerlerinizi girin:
+`.env.example` dosyasını `.env` olarak kopyalayıp yerel değerlerinizi girin:
 
 ```env
 ADMIN_USERNAME=admin
 ADMIN_PASSWORD=guvenli_admin_parolasi
-
 SUPERVISOR_USERNAME=supervisor
 SUPERVISOR_PASSWORD=guvenli_supervisor_parolasi
-
 SESSION_SECRET=uzun_rastgele_session_secret
 PORT=3000
 ```
@@ -231,9 +226,7 @@ cd employee-attendance-management-system
 npm install
 ```
 
-Environment dosyasını oluşturun.
-
-macOS / Linux:
+Environment dosyasını oluşturun:
 
 ```bash
 cp .env.example .env
@@ -251,15 +244,11 @@ Copy-Item .env.example .env
 npm start
 ```
 
-Tarayıcıdan:
-
-```text
-http://localhost:3000
-```
+Tarayıcıdan `http://localhost:3000` adresini açın.
 
 ## 📥 Excelden Çalışan İçe Aktarma Formatı
 
-İlk çalışma sayfası okunur ve ilk satır başlık kabul edilir. Beklenen sütunlar:
+İlk çalışma sayfası okunur ve ilk satır başlık kabul edilir.
 
 | Sütun | Değer |
 |---|---|
@@ -274,23 +263,11 @@ Geçersiz, eksik veya tekrar eden satırlar atlanır ve sonuç ekranında raporl
 
 ## 📊 Raporlama Detayları
 
-### Çalışan Aylık Excel / PDF
-Günlük kayıtlar ve aylık toplamlar bulunur:
+**Çalışan Aylık Excel / PDF**; tarih/gün, devam durumu, giriş/çıkış, çalışma saati, fazla mesai, devamsızlık sebebi, sağlık raporu ve not bilgilerini içerir.
 
-- Tarih ve gün
-- Devam durumu
-- Giriş / çıkış
-- Çalışma saati
-- Fazla mesai
-- Devamsızlık sebebi
-- Sağlık raporu bilgisi
-- Açıklama / not
+**Genel Aylık Excel**, seçilen ay/yıl için çalışan bazlı toplamları verir.
 
-### Genel Aylık Excel
-Seçilen ay ve yıl için çalışan bazlı toplamları gösterir.
-
-### Geç Kalma Excel / PDF
-Çalışan, departman, tarih, gerçek giriş saati, planlanan başlangıç ve gecikme dakikasını içerir.
+**Geç Kalma Excel / PDF**, çalışan, departman, tarih, gerçek giriş saati, planlanan başlangıç ve gecikme dakikasını içerir.
 
 ## ✅ Yapılan Kontroller
 
@@ -298,20 +275,19 @@ Portföy sürümünde ana akışlar smoke test ile kontrol edilmiştir:
 
 - Doğru ve hatalı giriş
 - Giriş yapılmadan ana sayfaya erişimde login yönlendirmesi
-- Admin dashboard ve tüm admin sayfaları
-- Supervisor dashboard ve devam kayıt ekranı
+- Admin paneli ve admin sayfaları
+- Supervisor panel ve devam kayıt erişimi
 - Supervisor için admin bölümlerinde `403` kontrolü
 - Çalışan ekleme / görüntüleme / güncelleme / aktif / pasif işlemleri
 - Günlük devam kaydı oluşturma ve düzenleme
-- Çalışan aylık Excel çıktısı
-- Türkçe karakter destekli çalışan aylık PDF çıktısı
+- Çalışan aylık Excel ve PDF çıktıları
 - Genel aylık Excel raporu
-- Geç kalma Excel raporu
-- Türkçe karakter destekli geç kalma PDF raporu
+- Geç kalma Excel ve PDF raporları
+- Türkçe karakter destekli PDF çıktısı
 - Ayar güncelleme
 - Vardiya oluşturma
 - Tatil oluşturma
-- Manuel yedek oluşturma
+- Manuel yedek oluşturma ve geri yükleme doğrulaması
 - Excelden çalışan içe aktarma
 - 404 sayfası
 - JavaScript syntax kontrolü
@@ -319,7 +295,7 @@ Portföy sürümünde ana akışlar smoke test ile kontrol edilmiştir:
 
 ## ⚠️ Portföy / Production Kapsamı
 
-Bu repository, gerçek iş süreçlerinin ve uygulama mimarisinin nasıl tasarlandığını göstermek amacıyla hazırlanmıştır. Portföy ve yerel/dahili demonstrasyon için uygundur; yukarıdaki production güvenlik geliştirmeleri yapılmadan tamamlanmış enterprise HR platformu olarak değerlendirilmemelidir.
+Bu repository, gerçek iş süreçlerinin ve uygulama mimarisinin nasıl tasarlandığını göstermek amacıyla hazırlanmıştır. Portföy ve yerel/dahili demonstrasyon için uygundur; ek production hardening yapılmadan tamamlanmış enterprise HR platformu olarak değerlendirilmemelidir.
 
 ## 🎯 Proje Amacı
 
