@@ -74,7 +74,12 @@ function generateId(prefix) {
 }
 function readShifts() { if (!fs.existsSync(FILES.shifts)) fs.writeFileSync(FILES.shifts, '[]'); return JSON.parse(fs.readFileSync(FILES.shifts,'utf8')); }
 function writeShifts(data){ fs.writeFileSync(FILES.shifts, JSON.stringify(data,null,2),'utf8'); }
-function readUsers() { return readData('users'); }
+function readUsers() {
+  const users = [];
+  if (process.env.ADMIN_USERNAME) users.push({ username: process.env.ADMIN_USERNAME, name: 'Admin', role: 'admin' });
+  if (process.env.SUPERVISOR_USERNAME) users.push({ username: process.env.SUPERVISOR_USERNAME, name: 'Supervisor', role: 'supervisor' });
+  return users;
+}
 function readHolidays() { if (!fs.existsSync(FILES.holidays)) fs.writeFileSync(FILES.holidays, '[]'); return JSON.parse(fs.readFileSync(FILES.holidays,'utf8')); }
 function writeHolidays(data){ fs.writeFileSync(FILES.holidays, JSON.stringify(data,null,2),'utf8'); }
 function readSettings() {
