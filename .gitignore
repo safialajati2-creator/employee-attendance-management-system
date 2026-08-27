@@ -3,5 +3,6 @@ node_modules/
 npm-debug.log*
 .DS_Store
 coverage/
+tmp/
 data/backups/*
 !data/backups/.gitkeep
