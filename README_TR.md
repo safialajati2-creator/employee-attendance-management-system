@@ -300,3 +300,9 @@ Bu repository, gerçek iş süreçlerinin ve uygulama mimarisinin nasıl tasarla
 ## 🎯 Proje Amacı
 
 Bu proje; **Node.js backend geliştirme, Express routing, EJS arayüz geliştirme, kimlik doğrulama ve yetkilendirme, iş kuralları, dosya tabanlı veri saklama, devam hesaplamaları, Excel/PDF raporlama, veri içe aktarma, audit log, yedekleme/geri yükleme ve operasyonel iş sistemi tasarımı** becerilerini göstermeyi amaçlar.
+
+## Geliştirici
+
+Software Developer
+
+[GitHub](https://github.com/safialajati2-creator) · [LinkedIn](https://www.linkedin.com/in/mustafa-alajati-8a1aa4286/?isSelfProfile=true) · [Email](mailto:Safialajati2@gmail.com)
