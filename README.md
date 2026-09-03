@@ -300,3 +300,9 @@ This repository demonstrates application architecture and real business-process 
 ## 🎯 Project Purpose
 
 This project demonstrates practical skills in **Node.js backend development, Express routing, EJS UI development, authentication and authorization, business-rule implementation, file-based persistence, attendance calculations, Excel/PDF reporting, import workflows, audit logging, backup/restore design and operational business-system development**.
+
+## Developer
+
+Software Developer
+
+[GitHub](https://github.com/safialajati2-creator) · [LinkedIn](https://www.linkedin.com/in/mustafa-alajati-8a1aa4286/?isSelfProfile=true) · [Email](mailto:Safialajati2@gmail.com)
